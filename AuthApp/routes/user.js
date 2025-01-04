@@ -11,3 +11,4 @@ const {login, signup} = require('../controllers/Auth');
 router.post('/signup', signup);
 
 module.exports = router;
+
