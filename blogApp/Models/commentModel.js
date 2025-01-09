@@ -1,30 +1,22 @@
-const mongoose = require("mongoose"); // Fixed typo: changed 'required' to 'require'
+//import mongoose
+const mongoose = require("mongoose");
 
+
+//route handler
 const commentSchema = new mongoose.Schema({
-    user:{
+    post:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "userModel",
-        required: true,
+        ref: "Post", //reference to the post model
     },
-    blog:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "blogModel",
-        required: true,
-    },
-    comment:{
+    user: {
         type: String,
-        required: true,
+        required:true,
     },
-    createdAt:{
-        type: Date,
-        required: true,
-        default: Date.now(),
-    },
-    updatedAt:{
-        type: Date,
-        required: true,
-        default: Date.now(),
-    },
+    body: {
+        type:String,
+        required:true,
+    }
 });
 
-module.exports = mongoose.model("commentModel", commentSchema); // Fixed typo: changed 'Model' to 'model'
+//export
+module.exports = mongoose.model("Comment", commentSchema);

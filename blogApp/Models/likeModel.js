@@ -1,30 +1,19 @@
+//import mongoose
 const mongoose = require("mongoose");
 
+
+//route handler
+
 const likeSchema = new mongoose.Schema({
-    user:{
+    post:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "userModel",
-        required: true,
+        ref: "Post", //reference to the post model
     },
-    blog:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "blogModel",
-        required: true,
-    },
-    liked:{
-        type: Boolean,
-        default: true,
-    },
-    createdAt:{
-        type: Date,
-        required: true,
-        default: Date.now(),
-    },
-    updatedAt:{
-        type: Date,
-        required: true,
-        default: Date.now(),
+    user: {
+        type: String,
+        required:true,
     },
 });
 
-module.exports = mongoose.model("likeModel", likeSchema); // Fixed typo: changed 'Model' to 'model'
+//export
+module.exports = mongoose.model("Like", likeSchema);
